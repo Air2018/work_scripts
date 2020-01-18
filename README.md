@@ -4,3 +4,5 @@
 ## adbpush.py
 在android模块编译时(mmm/mmma/mm)，根据编译LOG，自动push编译的.so/bin文件，用法:
 python adbpush.py mmm.log(log文件路径)
+
+## aroot
