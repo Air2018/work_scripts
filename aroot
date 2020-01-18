@@ -1,0 +1,16 @@
+#!/bin/bash
+
+adb devices
+adb wait-for-device root
+
+need_reboot=`adb wait-for-device disable-verity | grep reboot`
+echo "$need_reboot"
+if [[ $need_reboot =~ "reboot" ]]
+then
+    adb wait-for-device reboot
+    adb wait-for-device root 
+else
+    adb wait-for-device remount
+fi
+echo "set log buffer size: adb logcat -G 200M"
+adb wait-for-device logcat -G 200M
